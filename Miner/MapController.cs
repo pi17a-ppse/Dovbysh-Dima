@@ -228,6 +228,27 @@ namespace Miner.Controllers
                     break;
             }
         }
+        private static void OpenCells(int i, int j)
+        {
+            OpenCell(i, j);
 
+            if (map[i, j] > 0)
+                return;
+
+            for (int k = i - 1; k < i + 2; k++)
+            {
+                for (int l = j - 1; l < j + 2; l++)
+                {
+                    if (!IsInBorder(k, l))
+                        continue;
+                    if (!buttons[k, l].Enabled)
+                        continue;
+                    if (map[k, l] == 0)
+                        OpenCells(k, l);
+                    else if (map[k, l] > 0)
+                        OpenCell(k, l);
+                }
+            }
+        }
     }
 }
