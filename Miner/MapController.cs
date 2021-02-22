@@ -105,5 +105,27 @@ namespace Miner.Controllers
             }
             pressedButton.Image = FindNeededImage(posX, posY);
         }
+        private static void OnLeftButtonPressed(Button pressedButton)
+        {
+            pressedButton.Enabled = false;
+            int iButton = pressedButton.Location.Y / cellSize;
+            int jButton = pressedButton.Location.X / cellSize;
+            if (isFirstStep)
+            {
+                firstCoord = new Point(jButton, iButton);
+                SeedMap();
+                CountCellBomb();
+                isFirstStep = false;
+            }
+            OpenCells(iButton, jButton);
+
+            if (map[iButton, jButton] == -1)
+            {
+                ShowAllBombs(iButton, jButton);
+                MessageBox.Show("Поражение!");
+                form.Controls.Clear();
+                Init(form);
+            }
+        }
     }
 }
