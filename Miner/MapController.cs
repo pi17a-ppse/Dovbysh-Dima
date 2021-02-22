@@ -103,7 +103,7 @@ namespace Miner.Controllers
                     posY = 2;
                     break;
             }
-            pressedButton.Image = FindNeededImage(posX, posY);
+            pressedButton.Image = FindNeededImage(posX, posY);//Событие при нажатии лкм
         }
         private static void OnLeftButtonPressed(Button pressedButton)
         {
