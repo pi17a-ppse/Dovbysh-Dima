@@ -42,5 +42,15 @@ namespace Miner.Controllers
                 }
             }
         }
+        public static void Init(Form current)
+        {
+            form = current;
+            currentPictureToSet = 0;
+            isFirstStep = true;
+            spriteSet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "tiles.png"));
+            ConfigureMapSize(current);
+            InitMap();
+            InitButtons(current);
+        }
     }
 }
