@@ -27,5 +27,10 @@ namespace Miner.Controllers
         private static Point firstCoord;
 
         public static Form form;
+        private static void ConfigureMapSize(Form current)
+        {
+            current.Width = mapSize * cellSize + 20;
+            current.Height = (mapSize + 1) * cellSize;
+        }
     }
 }
