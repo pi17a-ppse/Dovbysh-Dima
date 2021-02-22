@@ -151,5 +151,23 @@ namespace Miner.Controllers
 
             return image;
         }
+        private static void SeedMap()
+        {
+            Random r = new Random();
+            int number = r.Next(7, 15);
+
+            for (int i = 0; i < number; i++)
+            {
+                int posI = r.Next(0, mapSize - 1);
+                int posJ = r.Next(0, mapSize - 1);
+
+                while (map[posI, posJ] == -1 || (Math.Abs(posI - firstCoord.Y) <= 1 && Math.Abs(posJ - firstCoord.X) <= 1))
+                {
+                    posI = r.Next(0, mapSize - 1);
+                    posJ = r.Next(0, mapSize - 1);
+                }
+                map[posI, posJ] = -1;
+            }
+        }
     }
 }
