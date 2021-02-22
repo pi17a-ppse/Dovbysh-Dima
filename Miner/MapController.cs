@@ -7,9 +7,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Miner
+namespace Miner.Controllers
 {
-    class MapController
+    public static class MapController
     {
+        public const int mapSize = 8;
+        public const int cellSize = 50;
+
+        private static int currentPictureToSet = 0;
+
+        public static int[,] map = new int[mapSize, mapSize];
+
+        public static Button[,] buttons = new Button[mapSize, mapSize];
+
+        public static Image spriteSet;
+
+        private static bool isFirstStep;
+
+        private static Point firstCoord;
+
+        public static Form form;
     }
 }
