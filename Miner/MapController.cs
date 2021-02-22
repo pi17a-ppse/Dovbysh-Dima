@@ -69,7 +69,7 @@ namespace Miner.Controllers
             }
         }
 
-        private static void OnButtonPressedMouse(object sender, MouseEventArgs e)
+        private static void OnButtonPressedMouse(object sender, MouseEventArgs e)//Чтение, какая кнопка мыши была нажата
         {
             Button pressedButton = sender as Button;
             switch (e.Button.ToString())
@@ -82,7 +82,7 @@ namespace Miner.Controllers
                     break;
             }
         }
-        private static void OnRightButtonPressed(Button pressedButton)
+        private static void OnRightButtonPressed(Button pressedButton)//Событие при нажатии пкм
         {
             currentPictureToSet++;
             currentPictureToSet %= 3;
@@ -103,7 +103,7 @@ namespace Miner.Controllers
                     posY = 2;
                     break;
             }
-            pressedButton.Image = FindNeededImage(posX, posY);
+            pressedButton.Image = FindNeededImage(posX, posY);//Событие при нажатии лкм
         }
         private static void OnLeftButtonPressed(Button pressedButton)
         {
