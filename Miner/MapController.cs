@@ -169,5 +169,26 @@ namespace Miner.Controllers
                 map[posI, posJ] = -1;
             }
         }
+        private static void CountCellBomb()
+        {
+            for (int i = 0; i < mapSize; i++)
+            {
+                for (int j = 0; j < mapSize; j++)
+                {
+                    if (map[i, j] == -1)
+                    {
+                        for (int k = i - 1; k < i + 2; k++)
+                        {
+                            for (int l = j - 1; l < j + 2; l++)
+                            {
+                                if (!IsInBorder(k, l) || map[k, l] == -1)
+                                    continue;
+                                map[k, l] = map[k, l] + 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
