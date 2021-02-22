@@ -52,5 +52,35 @@ namespace Miner.Controllers
             InitMap();
             InitButtons(current);
         }
+        private static void InitButtons(Form current)
+        {
+            for (int i = 0; i < mapSize; i++)
+            {
+                for (int j = 0; j < mapSize; j++)
+                {
+                    Button button = new Button();
+                    button.Location = new Point(j * cellSize, i * cellSize);
+                    button.Size = new Size(cellSize, cellSize);
+                    button.Image = FindNeededImage(0, 0);
+                    button.MouseUp += new MouseEventHandler(OnButtonPressedMouse);
+                    current.Controls.Add(button);
+                    buttons[i, j] = button;
+                }
+            }
+        }
+
+        private static void OnButtonPressedMouse(object sender, MouseEventArgs e)
+        {
+            Button pressedButton = sender as Button;
+            switch (e.Button.ToString())
+            {
+                case "Right":
+                    OnRightButtonPressed(pressedButton);
+                    break;
+                case "Left":
+                    OnLeftButtonPressed(pressedButton);
+                    break;
+            }
+        }
     }
 }
