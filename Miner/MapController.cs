@@ -190,5 +190,44 @@ namespace Miner.Controllers
                 }
             }
         }
+        private static void OpenCell(int i, int j)
+        {
+            buttons[i, j].Enabled = false;
+
+            switch (map[i, j])
+            {
+                case 1:
+                    buttons[i, j].Image = FindNeededImage(1, 0);
+                    break;
+                case 2:
+                    buttons[i, j].Image = FindNeededImage(2, 0);
+                    break;
+                case 3:
+                    buttons[i, j].Image = FindNeededImage(3, 0);
+                    break;
+                case 4:
+                    buttons[i, j].Image = FindNeededImage(4, 0);
+                    break;
+                case 5:
+                    buttons[i, j].Image = FindNeededImage(0, 1);
+                    break;
+                case 6:
+                    buttons[i, j].Image = FindNeededImage(1, 1);
+                    break;
+                case 7:
+                    buttons[i, j].Image = FindNeededImage(2, 1);
+                    break;
+                case 8:
+                    buttons[i, j].Image = FindNeededImage(3, 1);
+                    break;
+                case -1:
+                    buttons[i, j].Image = FindNeededImage(1, 2);
+                    break;
+                case 0:
+                    buttons[i, j].Image = FindNeededImage(0, 0);
+                    break;
+            }
+        }
+
     }
 }
