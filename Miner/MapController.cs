@@ -69,7 +69,7 @@ namespace Miner.Controllers
             }
         }
 
-        private static void OnButtonPressedMouse(object sender, MouseEventArgs e)
+        private static void OnButtonPressedMouse(object sender, MouseEventArgs e)//Чтение, какая кнопка мыши была нажата
         {
             Button pressedButton = sender as Button;
             switch (e.Button.ToString())
