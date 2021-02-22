@@ -82,7 +82,7 @@ namespace Miner.Controllers
                     break;
             }
         }
-        private static void OnRightButtonPressed(Button pressedButton)
+        private static void OnRightButtonPressed(Button pressedButton)//Событие при нажатии пкм
         {
             currentPictureToSet++;
             currentPictureToSet %= 3;
