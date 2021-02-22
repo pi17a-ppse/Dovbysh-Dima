@@ -82,5 +82,28 @@ namespace Miner.Controllers
                     break;
             }
         }
+        private static void OnRightButtonPressed(Button pressedButton)
+        {
+            currentPictureToSet++;
+            currentPictureToSet %= 3;
+            int posX = 0;
+            int posY = 0;
+            switch (currentPictureToSet)
+            {
+                case 0:
+                    posX = 0;
+                    posY = 0;
+                    break;
+                case 1:
+                    posX = 0;
+                    posY = 2;
+                    break;
+                case 2:
+                    posX = 2;
+                    posY = 2;
+                    break;
+            }
+            pressedButton.Image = FindNeededImage(posX, posY);
+        }
     }
 }
