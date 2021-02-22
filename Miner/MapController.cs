@@ -127,5 +127,20 @@ namespace Miner.Controllers
                 Init(form);
             }
         }
+        private static void ShowAllBombs(int iBomb, int jBomb)
+        {
+            for (int i = 0; i < mapSize; i++)
+            {
+                for (int j = 0; j < mapSize; j++)
+                {
+                    if (i == iBomb && j == jBomb)
+                        continue;
+                    if (map[i, j] == -1)
+                    {
+                        buttons[i, j].Image = FindNeededImage(3, 2);
+                    }
+                }
+            }
+        }
     }
 }
