@@ -142,5 +142,14 @@ namespace Miner.Controllers
                 }
             }
         }
+        public static Image FindNeededImage(int xPos, int yPos)
+        {
+            Image image = new Bitmap(cellSize, cellSize);
+            Graphics g = Graphics.FromImage(image);
+            g.DrawImage(spriteSet, new Rectangle(new Point(0, 0), new Size(cellSize, cellSize)), 0 + 32 * xPos, 0 + 32 * yPos, 33, 33, GraphicsUnit.Pixel);
+
+
+            return image;
+        }
     }
 }
