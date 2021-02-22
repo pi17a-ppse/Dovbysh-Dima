@@ -32,5 +32,15 @@ namespace Miner.Controllers
             current.Width = mapSize * cellSize + 20;
             current.Height = (mapSize + 1) * cellSize;
         }
+        private static void InitMap()
+        {
+            for (int i = 0; i < mapSize; i++)
+            {
+                for (int j = 0; j < mapSize; j++)
+                {
+                    map[i, j] = 0;
+                }
+            }
+        }
     }
 }
