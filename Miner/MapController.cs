@@ -9,9 +9,39 @@ using System.Windows.Forms;
 
 namespace Miner.Controllers
 {
+    /** 
+ * Сапёр  
+ *  
+ * Класс используется для создание
+ * игра сапер. 
+ * 
+ * @author Dima Dovbysh
+ * @version 1.0. 0.
+ * @copyright GNU Public License 
+ * @todo Реализовать все методы 
+ */
     public static class MapController
     {
+        /** 
+ * Размер картинки(количество иконок в картинке) 
+ * 
+ * Используетс для корректного 
+ * поиска и использования
+ * необходимых иконок 
+ * 
+ * @var int $mapSize 
+ */
+
         public const int mapSize = 8;
+        /** 
+* Количество клеток на игровом поле
+* 
+* Используетс для отрисовки 
+* необходимого количества 
+* клеток и дальнейших расчетов
+* 
+* @var int $cellSize
+*/
         public const int cellSize = 50;
 
         private static int currentPictureToSet = 0;
@@ -27,6 +57,16 @@ namespace Miner.Controllers
         private static Point firstCoord;
 
         public static Form form;
+        /** 
+ * Работа c размером поля
+ * 
+ * Используется размер иконки, 
+ * количество строк и столбцов, 
+ * для определения размеров поля
+ * 
+ * @param $mapSize ширина 
+ * @param $Height высота 
+ */
         private static void ConfigureMapSize(Form current)
         {
             current.Width = mapSize * cellSize + 20;
@@ -52,6 +92,15 @@ namespace Miner.Controllers
             InitMap();
             InitButtons(current);
         }
+        /** 
+* Работа c отрисовкой поля
+* 
+* Используется для генерации поля, 
+* определенным алгоритмом
+* 
+* @param $mapSize размер иконки
+* @param $cellSize количество полей
+*/
         private static void InitButtons(Form current)
         {
             for (int i = 0; i < mapSize; i++)
@@ -68,7 +117,14 @@ namespace Miner.Controllers
                 }
             }
         }
-
+        /** 
+* Чнение нажатой кнопки на мыше
+* 
+* Используется для того, 
+* что бы понимать, какую 
+* кнопку пользователь нажал: лкм или пкм
+* 
+*/
         private static void OnButtonPressedMouse(object sender, MouseEventArgs e)//Чтение, какая кнопка мыши была нажата
         {
             Button pressedButton = sender as Button;
@@ -82,6 +138,17 @@ namespace Miner.Controllers
                     break;
             }
         }
+        /** 
+* Собитые, при нажатии на пкм
+* 
+* Используется для определения 
+* позиции мышки, при нажатии пкм и 
+* загрузке иконки флажка на 
+* определенную позицию
+* 
+* @param $posX координаты Х
+* @param $posY координаты Y
+*/
         private static void OnRightButtonPressed(Button pressedButton)//Событие при нажатии пкм
         {
             currentPictureToSet++;
@@ -105,6 +172,16 @@ namespace Miner.Controllers
             }
             pressedButton.Image = FindNeededImage(posX, posY);//Событие при нажатии лкм
         }
+        /** 
+* Собитые, при нажатии на лкм
+* 
+* Используется для определения 
+* позиции мышки, пр нажатии лкм и 
+* работы алгоритмов игры
+* 
+* @param $iButton координаты Х
+* @param $jButton координаты Y
+*/
         private static void OnLeftButtonPressed(Button pressedButton)
         {
             pressedButton.Enabled = false;
@@ -127,6 +204,14 @@ namespace Miner.Controllers
                 Init(form);
             }
         }
+        /** 
+* Показ всех бомб
+* 
+* Используется для показа 
+* нахождения все бомб на карте 
+* при поражении
+* 
+*/
         private static void ShowAllBombs(int iBomb, int jBomb)
         {
             for (int i = 0; i < mapSize; i++)
@@ -142,6 +227,19 @@ namespace Miner.Controllers
                 }
             }
         }
+        /** 
+* Поиск необходимой иконки
+* 
+* Используется для поиска 
+* необходимых иконок, таких
+* как: цифры, флажек, бомба и тд. 
+* А также для отрисовки этих иконок
+* 
+* @param $iButton координаты Х
+* @param $jButton координаты Y
+* 
+* @return image Возвращает текущую найденную иконку 
+*/
         public static Image FindNeededImage(int xPos, int yPos)
         {
             Image image = new Bitmap(cellSize, cellSize);
@@ -190,6 +288,14 @@ namespace Miner.Controllers
                 }
             }
         }
+        /** 
+* Открытие полей
+* 
+* Используется для открытия
+* поля и загруски необходимой 
+* иконки
+* 
+*/
         private static void OpenCell(int i, int j)
         {
             buttons[i, j].Enabled = false;
@@ -250,6 +356,14 @@ namespace Miner.Controllers
                 }
             }
         }
+        /** 
+* Проверка на выход за границы
+* 
+* Используется проверки, не выходит ли 
+* поле за границы формы при отрисовке
+* 
+* @return bool Возвращает либо 1 либо 0 
+*/
         private static bool IsInBorder(int i, int j)
         {
             if (i < 0 || j < 0 || j > mapSize - 1 || i > mapSize - 1)
